@@ -38,7 +38,7 @@ server {
 	#
 	# include snippets/snakeoil.conf;
 
-	root /var/www/wp;
+	root /var/www/WPScalePro/wp;
 	include snippets/global-restrictions.conf;
 
 	# Add index.php to the list if you are using PHP
