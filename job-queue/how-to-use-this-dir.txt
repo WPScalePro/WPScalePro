@@ -1,0 +1,4 @@
+##job-queue Dir
+
+placing an empty file with the name of "stop" or "stop.txt"
+will stop processing job queue on all the servers.
