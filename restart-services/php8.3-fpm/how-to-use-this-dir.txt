@@ -1,0 +1,4 @@
+##restart-services/php8.3-fpm
+
+placing an empty file with the name of "yes" or "yes.txt"
+here will restart php8.3-fpm service.

@@ -1,0 +1,5 @@
+##restart-services
+
+placing an empty file with the name of "yes" or "yes.txt"
+in side the given directory of nginx or php8.3-fpm will restart the 
+service.
