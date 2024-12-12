@@ -16,11 +16,36 @@
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
 ##
 
+upstream wpscalepro {
+    include /mnt/network-share/network-data/load-balancer/*;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    
+    location / {
+    
+        proxy_pass http://wpscalepro;
+        proxy_pass_request_headers        on;
+        proxy_set_header X-Real-IP        $remote_addr;
+        proxy_set_header X-Forwarded-For  $remote_addr;
+        proxy_set_header Host             $host;
+
+    }
+}
+
+
+
+
+
+
 # Default server configuration
 #
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+
+	listen 8080 default_server;
+	listen [::]:8080 default_server;
 
 	root /var/www/WPScalePro/wp/;
 	include snippets/global-restrictions.conf;
@@ -28,7 +53,7 @@ server {
 	# Add index.php to the list if you are using PHP
 	index index.php index.html index.htm index.nginx-debian.html;
 
-	server_name _;
+	server_name rabbitbuilder.com;
 
 	location /wp-content/ {
 		alias /mnt/network-share/wp-content/;
@@ -55,8 +80,8 @@ server {
 # Generic CDN Server Config
 #
 server {
-	listen 80;
-	listen [::]:80;
+	listen 8080;
+	listen [::]:8080;
 
 	root /var/www/WPScalePro/wp/;
 	include snippets/global-restrictions.conf;
